@@ -21,6 +21,8 @@ public protocol iBinarySearchTree {
 
 public extension iBinarySearchTree {
 	
+	var isEmpty: Bool { root == nil }
+	
 	func contains(node: NodeType) -> Bool {
 		func _contains(treeNode: NodeType?) -> Bool {
 			guard let treeNode else { return false }
@@ -41,5 +43,22 @@ public extension iBinarySearchTree {
 	
 	func remove(node: NodeType?) {
 		if let node { remove(node: node) }
+	}
+}
+
+public extension iBinarySearchTree {
+	
+	func mininum(of node: NodeType) -> NodeType {
+		guard let leftNode = node.leftChild else {
+			return node
+		}
+		return mininum(of: leftNode)
+	}
+	
+	func maximun(of node: NodeType) -> NodeType {
+		guard let rightChild = node.rightChild else {
+			return node
+		}
+		return maximun(of: rightChild)
 	}
 }

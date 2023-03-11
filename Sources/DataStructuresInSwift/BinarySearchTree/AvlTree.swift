@@ -14,7 +14,11 @@ extension iAvlTreeNode {
 // MARK: - Tree
 final public class AvlTree<NodeType: iAvlTreeNode> {
 	
+	public var height: Int { root?.height ?? 0 }
+	
 	public private(set) var root: NodeType? = nil
+	
+	public func height(of node: NodeType) -> Int { node.height }
 }
 
 extension AvlTree: iBinarySearchTree {
